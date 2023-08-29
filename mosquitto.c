@@ -231,7 +231,8 @@ PHP_METHOD(Mosquitto_Client, setTlsCertificates)
 
 	PHP_MOSQUITTO_RESTORE_ERRORS();
 
-	php_stat(ca_path, ca_path_len, FS_IS_DIR, &stat);
+//  PHPAPI void php_stat(zend_string *filename, int type, zval *return_value);
+	php_stat(ca_path, FS_IS_DIR, &stat);
 	is_dir = Z_BVAL(stat);
 
 	if (key_pw != NULL) {
